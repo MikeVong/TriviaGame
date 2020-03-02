@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -15,19 +18,44 @@
   <body>
       <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                test 
+            <div class="col-md-3" id="timer">
+                <p>00 : 00</p>
+                
             </div>
             <div class="col-md-6" id="display">
                 <h1 class="display-4">Name that Song!</h1>
                 <p class="lead">Please listen to the song and guess the singer</p>
                 <hr class="my-4">
-                <p>You have 30 seconds per question. After 5 songs, you win or lose!</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Start Game</a>
+                <p>You have 30 seconds per question. After 5 songs, Click Start to play</p>
+                <a class="btn btn-primary btn-lg" id="start" href="#" role="button">Start</a> 
             </div>
-            <div class="col-md-3">
-                test 
+            <div class="col-md-3">   
             </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">  
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <hr>
+        <hr>
+        
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Third group">
+                    <button type="button" class="btn btn-secondary">8</button>
+                  </div>
+                  <div class="btn-group" role="group" aria-label="Third group">
+                    <button type="button" class="btn btn-secondary">8</button>
+                  </div>
+                  <div class="btn-group" role="group" aria-label="Third group">
+                    <button type="button" class="btn btn-secondary">8</button>
+                  </div>
+                  <div class="btn-group" role="group" aria-label="Third group">
+                    <button type="button" class="btn btn-secondary">8</button>
+                  </div>
+                  
+            </div>
+        
       </div>
       
     
