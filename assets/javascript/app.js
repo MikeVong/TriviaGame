@@ -9,7 +9,7 @@ $(document).ready(function()
 
 // Use the following Audio file below:
 var audioOne = new Audio("./assets/audio/alan.mp3");
-//var audioTwo = new Audio("raven.mp3");
+var audioTwo = new Audio("./assets/audio/mad.mp3");
 //var audioThree = new Audio("raven.mp3");
 //var audioFour = new Audio("raven.mp3");
 //var audioFive = new Audio("raven.mp3");
@@ -19,8 +19,13 @@ var audioOne = new Audio("./assets/audio/alan.mp3");
 //var audioNine = new Audio("raven.mp3");
 //var audioTen = new Audio("raven.mp3");
 
-
-
+var songList = [audioOne,audioTwo];
+var songName = ["Faded: Restrung","Mad World"]
+var songAnswer = ["Alan Walker", "Gray Jules"];
+    var firstArrButton = ["John Walker", "Gray Jules"];
+    var secondArrButton = ["Alan Walker", "Person 2"];
+    var thirdArrrButton = ["Bob Smith", "Joe"];
+    var fourthArrButton = ["Sean Paul", "Jane"];
 
 
 
@@ -60,14 +65,7 @@ function stop()
     }
 
 
-var songList = 
-    {
-    song1:  {
-            artist:"Alan Walker", 
-            answer:["John Walker", "Alan Walker", "Bob Smith", "Sean Paul"]
-            }
-     
-    };
+
 
 
 // Variable showImage will hold the setInterval when we start the slideshow
@@ -85,31 +83,24 @@ $("#start").click(displayImage);
 // This function will replace display whatever image it's given
 // in the 'src' attribute of the img tag.
 function displayImage() {
-    
     run();
-    alan();      
+    start();      
 }
 
 
-var randomAnswer = songList.song1.answer[Math.floor(Math.random() * songList.song1.answer.length)];
 function buttons()
-    {
-    
-    for (var i=0,j=4; i<j;i++)
-    {
-    
-    $("#display").append("<button class='btn btn-primary btn-lg'>" + randomAnswer + "</button>");
-    }
-    
-           
+    { 
+        $("#display").append("<button class='btn btn-primary btn-lg'>" + firstArrButton[count] + "</button>");
+        $("#display").append("<button class='btn btn-primary btn-lg'>" + secondArrButton[count] + "</button>");
+        $("#display").append("<button class='btn btn-primary btn-lg'>" + thirdArrrButton[count] + "</button>");
+        $("#display").append("<button class='btn btn-primary btn-lg'>" + fourthArrButton[count] + "</button>"); 
     };
 
 
 
-
-function alan()
+function start()
     {
-    audioOne.play();
+    songList[count].play();
     $("#display").html("<h1>" +"Who is the Artist?" + "</h1>")
     buttons();
     $(".btn").on("click",result);   
@@ -119,19 +110,24 @@ function alan()
 
 function result()
     {
-        if (randomAnswer1 === songList.artistName[0])
+        if ($(this).text() == songAnswer[count])
         {
-            $("#display").html("<h1>" +"Correct! The name of the song is Faded by Alan Walker" + "</h1>");
-            audioOne.pause();
-            stop(); 
-            nextSong();
+            $("#display").html("<h1>" +"Correct! The name of the song is "+ songName[count] +" by " + songAnswer[count] + " !"+"</h1>");
+            songList[count].pause();
+            stop();
+            count++;
+            displayImage();
+
+            
         }
         else
         {
-            $("#display").html("<h1>" +"Wrong! The name of the song is Faded by Alan Walker" + "</h1>");
-            audioOne.pause();
+            $("#display").html("<h1>" +"Wrong! The name of the song is "+ songName[count] +" by " + songAnswer[count] + " !"+"</h1>");
+            songList[count].pause();
             stop();
-            nextSong(); 
+            count++;
+            displayImage();
+            
         }
         
     };
