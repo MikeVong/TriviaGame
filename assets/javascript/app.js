@@ -26,7 +26,11 @@ var songAnswer = ["Alan Walker", "Gray Jules"];
     var secondArrButton = ["Alan Walker", "Person 2"];
     var thirdArrrButton = ["Bob Smith", "Joe"];
     var fourthArrButton = ["Sean Paul", "Jane"];
-
+var right = 0;
+var wrong = 0;
+var unanswer = 0;
+// Count will keep track of the index of the currently displaying picture.
+var count = 0;
 
 
 
@@ -52,7 +56,7 @@ function decrement()
         //  ...run the stop function.
         stop();
         //  Alert the user that time is up.
-        alert("Time Up!");
+        unanswer++;
         }
     }
 //  The stop function
@@ -64,101 +68,80 @@ function stop()
     clearInterval(intervalId);
     }
 
-
-
-
-
-// Variable showImage will hold the setInterval when we start the slideshow
-var showImage;
-
-// Count will keep track of the index of the currently displaying picture.
-var count = 0;
-
-// TODO: Use jQuery to run "startSlideshow" when we click the "start" button.
-$("#start").click(displayImage);
-
-
-
-
-// This function will replace display whatever image it's given
-// in the 'src' attribute of the img tag.
-function displayImage() {
-    run();
-    start();      
-}
+$("#start").click(start);
 
 
 function buttons()
-    { 
-        $("#display").append("<button class='btn btn-primary btn-lg'>" + firstArrButton[count] + "</button>");
-        $("#display").append("<button class='btn btn-primary btn-lg'>" + secondArrButton[count] + "</button>");
-        $("#display").append("<button class='btn btn-primary btn-lg'>" + thirdArrrButton[count] + "</button>");
-        $("#display").append("<button class='btn btn-primary btn-lg'>" + fourthArrButton[count] + "</button>"); 
+    {   
+        $("#display").append("<button type='button'class='list-group-item list-group-item-action'>" + firstArrButton[count] + "</button>");
+        $("#display").append("<button type='button'class='list-group-item list-group-item-action'>" + secondArrButton[count] + "</button>");
+        $("#display").append("<button type='button'class='list-group-item list-group-item-action'>" + thirdArrrButton[count] + "</button>");
+        $("#display").append("<button type='button'class='list-group-item list-group-item-action'>" + fourthArrButton[count] + "</button>"); 
     };
-
-
 
 function start()
     {
+    songList[count].currentTime=0;
     songList[count].play();
     $("#display").html("<h1>" +"Who is the Artist?" + "</h1>")
     buttons();
-    $(".btn").on("click",result);   
+    run();
+    $(".list-group-item").on("click",result);   
     }
 
-
-
 function result()
-    {
-        if ($(this).text() == songAnswer[count])
         {
+        if ($(this).text() == songAnswer[count])
+            {
+            stop();
             $("#display").html("<h1>" +"Correct! The name of the song is "+ songName[count] +" by " + songAnswer[count] + " !"+"</h1>");
             songList[count].pause();
-            stop();
+            $("#timer").empty();
+            countTimer =30;
             count++;
-            displayImage();
-
-            
+            right++;
+            next();
+              
+            }
+        else
+            {
+            stop();
+            $("#display").html("<h1>" +"Wrong! The name of the song is "+ songName[count] +" by " + songAnswer[count] + " !"+"</h1>");
+            songList[count].pause();
+            $("#timer").empty();
+            countTimer = 30;
+            count++;
+            wrong++;
+            next();
+             
+            }
+        };
+function next()
+    {
+        if (count === songList.length)
+        {
+         showResult();
         }
         else
         {
-            $("#display").html("<h1>" +"Wrong! The name of the song is "+ songName[count] +" by " + songAnswer[count] + " !"+"</h1>");
-            songList[count].pause();
-            stop();
-            count++;
-            displayImage();
-            
+        setTimeout(start, 3000);
         }
-        
+    
     };
 
- //function nextSong() {
-  //  TODO: Increment the count by 1.
- //count++;
 
-  // TODO: Use a setTimeout to run displayImage after 1 second.
- // setTimeout(displayImage, 2000);
 
-  // TODO: If the count is the same as the length of the image array, reset the count to 0.
- // if (count === images.length) {
- //   count = 0;
- // }
-//}
-
-//function startSlideshow() {
-
- // // TODO: Use showImage to hold the setInterval to run nextImage.
- // showImage = setInterval(nextImage, 1000);
-
-//}
-
-//function stopSlideshow() {
-
-  // TODO: Put our clearInterval here:
- // clearInterval(showImage);
-
-//}
-
+function showResult()
+    {
+        $("#display").empty();
+        $("#display").append("<h1>" +"Number Correct Answer :  "+ right + "</h1>");
+        $("#display").append("<h1>" +"Number Wrong Answer :  "+ wrong + "</h1>");
+        $("#display").append("<h1>" +"Number Unanswer :  "+ unanswer + "</h1>");
+        $("#display").append("<button class='btn btn-primary btn-lg' id='again'>" + "Play again" + "</button>"); 
+        count = 0;
+        songList[count].pause();
+        $("#again").click(start);
+    }
 
 // This will run the display image function as soon as the page loads.
 
