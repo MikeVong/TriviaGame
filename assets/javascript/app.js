@@ -59,10 +59,14 @@ function stop()
     clearInterval(intervalId);
     }
 
-var songList
+
 var songList = 
     {
-    artistName:"Alan Walker", answer1:"John Walker", answer2: "Alan Walker", answer3: "Bob Smith", answer4: "Sean Paul"    
+    song1:  {
+            artist:"Alan Walker", 
+            answer:["John Walker", "Alan Walker", "Bob Smith", "Sean Paul"]
+            }
+     
     };
 
 
@@ -86,14 +90,28 @@ function displayImage() {
     alan();      
 }
 
+
+var randomAnswer = songList.song1.answer[Math.floor(Math.random() * songList.song1.answer.length)];
+function buttons()
+    {
+    
+    for (var i=0,j=4; i<j;i++)
+    {
+    
+    $("#display").append("<button class='btn btn-primary btn-lg'>" + randomAnswer + "</button>");
+    }
+    
+           
+    };
+
+
+
+
 function alan()
     {
     audioOne.play();
     $("#display").html("<h1>" +"Who is the Artist?" + "</h1>")
-    $("#display").append("<button class='btn btn-primary btn-lg' id='answer1'>" +"alan walker" + "</button>");
-    $("#display").append("<button class='btn btn-primary btn-lg' id='answer2'>" +"john smith" + "</button>");
-    $("#display").append("<button class='btn btn-primary btn-lg' id='answer3'>" +"bob walker" + "</button>");
-    $("#display").append("<button class='btn btn-primary btn-lg' id='answer4'>" +"larry walker" + "</button>");
+    buttons();
     $(".btn").on("click",result);   
     }
 
@@ -101,7 +119,7 @@ function alan()
 
 function result()
     {
-        if (answer === "alan walker")
+        if (randomAnswer1 === songList.artistName[0])
         {
             $("#display").html("<h1>" +"Correct! The name of the song is Faded by Alan Walker" + "</h1>");
             audioOne.pause();
