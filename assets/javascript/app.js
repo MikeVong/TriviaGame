@@ -59,9 +59,12 @@ function stop()
     clearInterval(intervalId);
     }
 
+var songList
+var songList = 
+    {
+    artistName:"Alan Walker", answer1:"John Walker", answer2: "Alan Walker", answer3: "Bob Smith", answer4: "Sean Paul"    
+    };
 
-// TODO: Put links to our images in this image array.
-var images = ["bootstrap.png", "github-logo.jpg", "logo_JavaScript.png"];
 
 // Variable showImage will hold the setInterval when we start the slideshow
 var showImage;
@@ -78,28 +81,54 @@ $("#start").click(displayImage);
 // This function will replace display whatever image it's given
 // in the 'src' attribute of the img tag.
 function displayImage() {
-    audioOne.play();
-    run();
-  $("#display").html("<h1>" +"Name that Song!" + "</h1>")
-
-        
-}
-
-function alan(){
     
+    run();
+    alan();      
 }
 
-// function nextImage() {
+function alan()
+    {
+    audioOne.play();
+    $("#display").html("<h1>" +"Who is the Artist?" + "</h1>")
+    $("#display").append("<button class='btn btn-primary btn-lg' id='answer1'>" +"alan walker" + "</button>");
+    $("#display").append("<button class='btn btn-primary btn-lg' id='answer2'>" +"john smith" + "</button>");
+    $("#display").append("<button class='btn btn-primary btn-lg' id='answer3'>" +"bob walker" + "</button>");
+    $("#display").append("<button class='btn btn-primary btn-lg' id='answer4'>" +"larry walker" + "</button>");
+    $(".btn").on("click",result);   
+    }
+
+
+
+function result()
+    {
+        if (answer === "alan walker")
+        {
+            $("#display").html("<h1>" +"Correct! The name of the song is Faded by Alan Walker" + "</h1>");
+            audioOne.pause();
+            stop(); 
+            nextSong();
+        }
+        else
+        {
+            $("#display").html("<h1>" +"Wrong! The name of the song is Faded by Alan Walker" + "</h1>");
+            audioOne.pause();
+            stop();
+            nextSong(); 
+        }
+        
+    };
+
+ //function nextSong() {
   //  TODO: Increment the count by 1.
-//  count++;
+ //count++;
 
   // TODO: Use a setTimeout to run displayImage after 1 second.
-//  setTimeout(displayImage, 5000);
+ // setTimeout(displayImage, 2000);
 
   // TODO: If the count is the same as the length of the image array, reset the count to 0.
-//  if (count === images.length) {
+ // if (count === images.length) {
  //   count = 0;
-//  }
+ // }
 //}
 
 //function startSlideshow() {
