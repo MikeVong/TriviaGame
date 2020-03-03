@@ -10,7 +10,7 @@ background-attachment: fixed;
 }
 #display
 {
-padding-top: 300px;
+padding-top: 280px;
 width: 600px;
 height: 400px;
 align-items: center;
@@ -36,5 +36,8 @@ color: black;
 .list-group-item
 {
 text-align: center;
-
+}
+#pix
+{
+padding-left: 200px;
 }

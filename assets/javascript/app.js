@@ -1,12 +1,18 @@
 $(document).ready(function()
 {
 
-
-// Juke box game - play a simple music, have user guess the song with a 
-// multi-choices of singer. 4 choices.
-// 30 sec timer each
-// 10 songs simple
-
+// artist cover
+var image1 = "./assets/images/alanFaded.jpg";
+var image2 = "./assets/images/grayMad.jpg";
+var image3 = "./assets/images/rihannaStay.jpg";
+var image4 = "./assets/images/chainNew.jpg";
+var image5 = "./assets/images/jonasSucker.jpg";
+var image6 = "./assets/images/samDance.jpg";
+var image7 = "./assets/images/luisDes.jpg";
+var image8 = "./assets/images/alanSpectre.jpg";
+var image9 = "./assets/images/alessoSweet.jpg";
+var image10 = "./assets/images/buntYoung.jpg";
+var artistPicture =[image1,image2,image3,image4,image5,image6,image7,image8,image9,image10]
 // Use the following Audio file below:
 var audioOne = new Audio("./assets/audio/alan.mp3");
 var audioTwo = new Audio("./assets/audio/mad.mp3");
@@ -65,7 +71,8 @@ function decrement()
         //  add up unanswered question.
         unanswer++;
         // display it
-        $("#display").html("<p>"+"The name of the song is "+"</p>"+ "<h3>" + songName[count] +"<hr>"+" by " +"<hr>"+ songAnswer[count] + " !"+"</h3>");
+        $("#display").html("<p>"+"The name of the song is "+"</p>"+ "<img id='pix' src=" + artistPicture[count] + ">" + "<h3>" + songName[count] +" by " + songAnswer[count] + " !"+"</h3>");
+        
         //reset the count timer
         countTimer =30;
         //count gamed played
@@ -117,7 +124,7 @@ function result()
             // stop the timer
             stop();
             // display the result of win
-            $("#display").html("<h1>" +"Correct!" + "</h1>"+ "<p>"+  "The name of the song is"  +"</p>" + "<h3>"+ songName[count] +"<hr>"+" by " +"<hr>"+ songAnswer[count] + " !"+"</h3>");
+            $("#display").html("<h1>" +"Correct!" + "</h1>"+ "<p>"+  "The name of the song is"  +"</p>" + "<img id='pix' src=" + artistPicture[count] + ">" + "<h3>"+ songName[count] +" by " + songAnswer[count] + " !"+"</h3>");
             //stop the playing song
             songList[count].pause();
             // empty the timer
@@ -137,7 +144,8 @@ function result()
         else
             {
             stop();
-            $("#display").html("<h1>" +"Wrong!" + "</h1>"+ "<p>"+  "The name of the song is"  +"</p>" + "<h3>"+ songName[count] +"<hr>"+" by " +"<hr>"+ songAnswer[count] + " !"+"</h3>");
+            $("#display").html("<h1>" +"Wrong!" + "</h1>"+ "<p>"+  "The name of the song is"  +"</p>" + "<img id='pix' src=" + artistPicture[count] + ">" +"<h3>"+ songName[count] +" by " + songAnswer[count] + " !"+"</h3>");
+            
             songList[count].pause();
             $("#timer").empty();
             countTimer = 30;
