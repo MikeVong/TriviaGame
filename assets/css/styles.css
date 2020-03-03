@@ -14,6 +14,7 @@ padding-top: 300px;
 width: 600px;
 height: 400px;
 align-items: center;
+
 }
 #question
 {
@@ -35,4 +36,5 @@ color: black;
 .list-group-item
 {
 text-align: center;
+
 }
