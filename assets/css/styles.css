@@ -19,3 +19,20 @@ align-items: center;
 {
 padding: 300px;
 }
+
+h1
+{
+color: yellow;
+}
+h3
+{
+color:blue;
+}
+p
+{
+color: black;
+}
+.list-group-item
+{
+text-align: center;
+}
