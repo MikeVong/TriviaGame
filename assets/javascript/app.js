@@ -145,7 +145,6 @@ function result()
             {
             stop();
             $("#display").html("<h1>" +"Wrong!" + "</h1>"+ "<p>"+  "The name of the song is"  +"</p>" + "<img id='pix' src=" + artistPicture[count] + ">" +"<h3>"+ songName[count] +" by " + songAnswer[count] + " !"+"</h3>");
-            
             songList[count].pause();
             $("#timer").empty();
             countTimer = 30;
